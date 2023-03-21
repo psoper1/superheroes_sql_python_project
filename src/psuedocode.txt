@@ -1,0 +1,61 @@
+Superhero Database
+
+Have a welcome screen that only allows entry if the correct password is entered
+
+If the correct password is entered, go to the main menu
+
+Main Menu: (Eventually try and wrap main menu into a def function so that it can be called
+back if the user wants to go to the main menu from within any entry)
+
+1. View all heroes
+2. Update information about a specific hero
+3. Add a new hero
+4. Delete a hero
+
+
+
+
+1. View all heroes
+
+Shows a list of all current heroes in the Database
+
+Gives an option to view more info (Name and Bio of the hero)
+
+
+
+
+2. Update information aboue a specific hero
+
+Will pull a list of all heros and ask to choose one by index to Update
+
+Will ask what to update: Name or Bio
+
+Whichever option is chosen will pull that column and run:
+
+UPDATE heroes
+SET (Selected column) = (Updated change)
+WHERE (Condition that chooses whichever hero ID was chosen)
+
+
+
+
+3. Add a new hero
+
+Will first ask what the new heros name will be, then a bio for that hero
+
+Code to run:
+
+INSERT INTO heroes(Put column here, either name or bio)
+VALUE (Enter the value that will go in to that column, either name or bio)
+
+
+
+
+4. Delete a hero
+
+Will show a list of the current hero list and ask to choose by index, which to Delete
+
+Code to run:
+
+DELETE FROM heroes
+WHERE (The number chose should be the index of the id column and delete that one)
