@@ -1,49 +1,13 @@
 from database.db_connection import execute_query
 
 def get_bio():
-    more_info = input("Choose a hero to view more information on that hero: ")
-    if more_info == "1":
-        query = "SELECT name FROM heroes WHERE id = 1"
-        query2 = "SELECT biography FROM heroes"
-        name = execute_query(query).fetchone()
-        bio = execute_query(query2).fetchone()
-        print(f"\nHero: {name[0]}\n")
-        print(f"Bio: {bio[0]}\n")
-    elif more_info == "2":
-        query = "SELECT name FROM heroes WHERE id = 2"
-        query2 = "SELECT biography FROM heroes WHERE id = 2"
-        name = execute_query(query).fetchone()
-        bio = execute_query(query2).fetchone()
-        print(f"\nHero: {name[0]}\n")
-        print(f"Bio: {bio[0]}\n")
-    elif more_info == "3":
-        query = "SELECT name FROM heroes WHERE id = 3"
-        query2 = "SELECT biography FROM heroes WHERE id = 3"
-        name = execute_query(query).fetchone()
-        bio = execute_query(query2).fetchone()
-        print(f"\nHero: {name[0]}\n")
-        print(f"Bio: {bio[0]}\n")
-    elif more_info == "4":
-        query = "SELECT name FROM heroes WHERE id = 4"
-        query2 = "SELECT biography FROM heroes WHERE id = 4"
-        name = execute_query(query).fetchone()
-        bio = execute_query(query2).fetchone()
-        print(f"\nHero: {name[0]}\n")
-        print(f"Bio: {bio[0]}\n")
-    elif more_info == "5":
-        query = "SELECT name FROM heroes WHERE id = 5"
-        query2 = "SELECT biography FROM heroes WHERE id = 5"
-        name = execute_query(query).fetchone()
-        bio = execute_query(query2).fetchone()
-        print(f"\nHero: {name[0]}\n")
-        print(f"Bio: {bio[0]}\n")
-    elif more_info == "6":
-        query = "SELECT name FROM heroes WHERE id = 6"
-        query2 = "SELECT biography FROM heroes WHERE id = 6"
-        name = execute_query(query).fetchone()
-        bio = execute_query(query2).fetchone()
-        print(f"\nHero: {name[0]}\n")
-        print(f"Bio: {bio[0]}\n")
+    update = input("\nSelect a hero:\n")
+    # Add more code here to finish statement
+    query = f"SELECT name from heroes WHERE id = {update}"
+    query3 = f"SELECT biography from heroes WHERE id = {update}"
+    name = execute_query(query).fetchone()
+    update_query = execute_query(query3).fetchone()
+    print(f"\nHERO: {name[0]}\nBIO: {update_query[0]}")
 
 def get_names():
     query = "SELECT name FROM heroes"
@@ -71,6 +35,10 @@ elif main_menu == "2":
     get_names()
     update = input("\nSelect a hero to update\n")
     # Add more code here to finish statement
+    query3 = f"SELECT name from heroes WHERE id = {update}"
+    update_query = execute_query(query3).fetchone()
+    print(update_query[0])
+    # [int(update) - 1]
 elif main_menu == "3":
     # Add code here to finish statement
     pass
