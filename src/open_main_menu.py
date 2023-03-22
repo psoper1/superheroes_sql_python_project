@@ -1,9 +1,10 @@
 from database.db_connection import execute_query
 from get_bio import get_bio
 from get_names import get_names
+import time
 
 def open_main_menu():
-    main_menu = input("\nMAIN MENU\n\nWhat would you like to do?\n\n1. View all heroes\n2. Update information about a specific hero\n3. Add a new hero\n4. Delete a hero\n\nPlease choose an option above\n")
+    main_menu = input(f"\nMAIN MENU\n\nWhat would you like to do?\n\n1. View all heroes\n2. Update information about a specific hero\n3. Add a new hero\n4. Delete a hero\n\nPlease choose an option above\n")
     
     if main_menu == "1":
         menu_one()
