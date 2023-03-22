@@ -1,10 +1,12 @@
-SELECT DISTINCT ability_types.name AS ability_name
-FROM heroes
-LEFT JOIN abilities
-    ON heroes.id=abilities.hero_id
-LEFT JOIN ability_types
-    ON abilities.ability_type_id=ability_types.id
-WHERE heroes.id=2
+SELECT * FROM ability_types
+
+-- SELECT DISTINCT ability_types.name AS ability_name
+-- FROM heroes
+-- LEFT JOIN abilities
+--     ON heroes.id=abilities.hero_id
+-- LEFT JOIN ability_types
+--     ON abilities.ability_type_id=ability_types.id
+-- WHERE heroes.id=2
 
 
 
