@@ -2,8 +2,20 @@ from database.db_connection import execute_query
 
 def get_bio():
     update = input("\nSelect a hero:\n")
-    query = f"SELECT name from heroes WHERE id = {update}"
-    query3 = f"SELECT biography from heroes WHERE id = {update}"
-    name = execute_query(query).fetchone()
-    update_query = execute_query(query3).fetchone()
-    print(f"\n\nHERO: {name[0]}\n\nBIO: {update_query[0]}\n")
+    query = "SELECT name, biography from heroes WHERE id = %s"
+    selected_hero = execute_query(query, (update, )).fetchone()
+    print(f"\n\nHERO: {selected_hero[0]}\n\nBIO: {selected_hero[1]}\n\nABILITIES: {get_abilities(update)}\n")
+
+def get_abilities(update):
+    abilities = """SELECT ability_types.name AS ability_name
+                    FROM heroes
+                    LEFT JOIN abilities
+                    ON heroes.id=abilities.hero_id
+                    LEFT JOIN ability_types
+                    ON abilities.ability_type_id=ability_types.id
+                    WHERE heroes.id=%s"""  
+    abilities_query = execute_query(abilities, (update, )).fetchall()
+    ability_string = []
+    for ability in abilities_query:
+        ability_string.append(ability[0])
+    return ", ".join(ability_string)
