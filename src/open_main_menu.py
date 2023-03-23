@@ -118,9 +118,9 @@ def menu_three():
         INSERT INTO abilities (hero_id, ability_type_id)
         VALUES((SELECT id 
         FROM heroes
-        WHERE name=%s), (SELECT id 
+        WHERE name = %s), (SELECT id 
         FROM ability_types
-        WHERE name=%s))
+        WHERE name = %s))
         """
         execute_query(run_two, (new_name, a, ))
 
