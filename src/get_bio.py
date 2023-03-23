@@ -1,11 +1,12 @@
 from database.db_connection import execute_query
 import time
+import os
 
 def get_bio():
-    time.sleep(1)
     update = input("\nSelect a hero to view more information:\n")
     query = "SELECT name, biography from heroes WHERE id = %s"
     selected_hero = execute_query(query, (update, )).fetchone()
+    os.system('clear')
     print(f"\n\nHERO: {selected_hero[0]}\n\nBIO: {selected_hero[1]}\n\nABILITIES: {get_abilities(update)}\n")
 
 def get_abilities(update):

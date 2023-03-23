@@ -5,29 +5,21 @@ import time
 import os
 
 def open_main_menu():
-    main_menu = input(f"""
-    \n-----------MAIN MENU-----------
-         -------------
-    What would you like to do?\n\n
-    1. View all heroes\n
-    2. Update information about a specific hero\n
-    3. Add a new hero\n
-    4. Delete a hero\n\n
-    Please choose an option above\n""")
+    main_menu = input(f"""\n
+-------------------Main Menu----------------------|
+--------------------------------------------------|
+-----What would you like to do?-------------------|
+--------------------------------------------------|
+-----1. View all heroes---------------------------|
+-----2. Update information about a specific hero--|
+-----3. Add a new hero----------------------------|
+-----4. Delete a hero-----------------------------|
+--------------------------------------------------|
+Please choose an option above---------------------|\n\n""")
     
     if main_menu == "1":
         os.system('clear')
-        print("\n\nALL HEROES\n----------\n")
-        get_names()
-        print("\n")
-        get_bio()
-        back_to_menu = input("Please press Enter or to return to the main menu or Q to exit the terminal:\n").capitalize()
-        if back_to_menu == "":
-            os.system('clear')
-            open_main_menu()
-        elif back_to_menu == "Q":
-            quit()
-        # main_or_quit()
+        menu_one()
     elif main_menu == "2":
         os.system('clear')
         menu_two()
@@ -38,16 +30,19 @@ def open_main_menu():
         os.system('clear')
         menu_four()
 
-# def menu_one():
-#     print("\n\nALL HEROES\n----------\n")
-#     get_names()
-#     print("\n")
-#     get_bio()
-#     main_or_quit()
+def menu_one():
+    print("\n\n-------------------All Heroes---------------------|\n--------------------------------------------------|\n")
+    get_names()
+    print("--------------------------------------------------|")
+    print("--------------------------------------------------|")
+    get_bio()
+    main_or_quit()
 
 def menu_two():
-    print("\n\nALL HEROES\n----------\n")
+    print("\n\n-------------------All Heroes---------------------|\n--------------------------------------------------|\n")
     get_names()
+    print("--------------------------------------------------|")
+    print("--------------------------------------------------|")
     update = input("\nSelect a hero to update\n")
     query3 = "SELECT name from heroes WHERE id = %s"
     update_query = execute_query(query3, (update,)).fetchone()
@@ -70,9 +65,10 @@ def menu_three():
     main_or_quit()
 
 def menu_four():
-    print("\n\nALL HEROES\n----------\n")
+    print("\n\n-------------------All Heroes---------------------|\n--------------------------------------------------|\n")
     get_names()
-    print("\n")
+    print("--------------------------------------------------|")
+    print("--------------------------------------------------|")
     delete = input("Enter the ID of the hero you wish to delete:\n")
     query = "DELETE FROM heroes WHERE id = %s"
     delete_query = execute_query(query, (delete,))
