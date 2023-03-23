@@ -98,7 +98,7 @@ def menu_three():
     query = "INSERT INTO heroes (name, about_me, biography) VALUES (%s, 'null', %s)"
     new_name_query = execute_query(query, (new_name, new_bio,))
     
-    new_ability = input("What powers do they have?")
+    new_ability = input("What kind of abilities does this hero have?")
     new_ability_split = new_ability.split(", ")
     new_ability_query = "SELECT name FROM ability_types"
     ability_list = []

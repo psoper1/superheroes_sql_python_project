@@ -1,4 +1,19 @@
-SELECT * FROM ability_types
+-- DELETE FROM abilities USING ability_types WHERE abilities.hero_id = ability_types.id AND abilities.hero_id = 21
+
+DELETE FROM ability_types WHERE id = 13
+-- DELETE FROM abilities
+-- WHERE hero_id
+-- IN (SELECT abilities.hero_id
+-- FROM abilities
+-- LEFT JOIN ability_types
+-- ON abilities.hero_id = ability_types.id
+-- WHERE abilities.hero_id = 21);
+
+-- INNER JOIN ability_types
+-- ON abilities.hero_id = ability_types.id
+-- WHERE abilities.hero_id = 21
+
+-- DELETE FROM t1, t2 USING t1 INNER JOIN t2 ON t1.id = t2.id;
 
 -- SELECT DISTINCT ability_types.name AS ability_name
 -- FROM heroes
