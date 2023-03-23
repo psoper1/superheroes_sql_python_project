@@ -1,6 +1,7 @@
 from database.db_connection import execute_query
 from get_bio import get_bio
 from get_names import get_names
+# from add_abilities import add_abilities
 import time
 import os
 from time import sleep
@@ -96,6 +97,33 @@ def menu_three():
     print("\n--------------------------------------------------|\n\n")
     query = "INSERT INTO heroes (name, about_me, biography) VALUES (%s, 'null', %s)"
     new_name_query = execute_query(query, (new_name, new_bio,))
+    
+    new_ability = input("What powers do they have?")
+    new_ability_split = new_ability.split(", ")
+    new_ability_query = "SELECT name FROM ability_types"
+    ability_list = []
+    existing_abilities = execute_query(new_ability_query).fetchall()
+    for tuple in existing_abilities:
+        for ability in tuple:
+            ability_list.append(ability)
+
+    for a in new_ability_split:
+        if a in ability_list:
+            pass
+        else:
+            run = "INSERT INTO ability_types (name) VALUES (%s)"
+            execute_query(run, (a, ))
+
+        run_two = """
+        INSERT INTO abilities (hero_id, ability_type_id)
+        VALUES((SELECT id 
+        FROM heroes
+        WHERE name=%s), (SELECT id 
+        FROM ability_types
+        WHERE name=%s))
+        """
+        execute_query(run_two, (new_name, a, ))
+
     name_string = f"{new_name} has been added to the team!\n\n"
     for char in name_string:
         sleep(0.05)
@@ -109,7 +137,7 @@ def menu_four():
     print("--------------------------------------------------|")
     print("--------------------------------------------------|")
     delete_string = "Enter the ID of the hero you wish to delete:\n"
-    for char in string:
+    for char in delete_string:
         sleep(0.05)
         sys.stdout.write(char)
         sys.stdout.flush()
