@@ -121,7 +121,6 @@ def menu_four():
         sleep(0.05)
         sys.stdout.write(char)
         sys.stdout.flush()
-    # print(f"Hero ID#{delete} has been removed from the team!")
     main_or_quit()
 
 def main_or_quit():
