@@ -3,9 +3,11 @@ from get_bio import get_bio
 from get_names import get_names
 import time
 import os
+from time import sleep
+import sys
 
 def open_main_menu():
-    main_menu = input(f"""\n
+    print(f"""\n
 -------------------Main Menu----------------------|
 --------------------------------------------------|
 -----What would you like to do?-------------------|
@@ -14,8 +16,13 @@ def open_main_menu():
 -----2. Update information about a specific hero--|
 -----3. Add a new hero----------------------------|
 -----4. Delete a hero-----------------------------|
---------------------------------------------------|
-Please choose an option above---------------------|\n\n""")
+--------------------------------------------------|""")
+    choose_option = ("Please choose an option above---------------------|\n")
+    for char in choose_option:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    main_menu = input("\n")
     
     if main_menu == "1":
         os.system('clear')
@@ -43,25 +50,57 @@ def menu_two():
     get_names()
     print("--------------------------------------------------|")
     print("--------------------------------------------------|")
-    update = input("\nSelect a hero to update\n")
+    string = "\nSelect a hero to update:\n"
+    for char in string:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    update = input("\n")
     query3 = "SELECT name from heroes WHERE id = %s"
     update_query = execute_query(query3, (update,)).fetchone()
-    print(f"Updating... {update_query[0]}")
+    os.system('clear')
+    print(f"\nUpdating... {update_query[0]}")
     what_to_update = input("\nWhich would you like to update? (Select One)\n\n1. Name\n\n2. Bio\n\n")
     if what_to_update == "1":
+        os.system('clear')
         name_change = input(f"What would you like to change {update_query[0]}s' name to?\n")
-        
         change_query = "UPDATE heroes SET name = %s WHERE id = %s"
         name_query = execute_query(change_query, (name_change, update,))
-        print(f"You have changed their name to {name_change}")
+        os.system('clear')
+        string = "You have changed their hero name to: \n\n"
+        for char in string:
+            sleep(0.05)
+            sys.stdout.write(char)
+            sys.stdout.flush()
+        time.sleep(1)
+        print("\n")
+        print(f"{name_change}")
+        print("\n\n")
     main_or_quit()
 
 def menu_three():
-    new_name = input("Enter the name of the new hero:\n")
-    new_bio = input(f"Enter a bio for {new_name}\n")
+    print("\n\n---------------New Hero Creation------------------|\n--------------------------------------------------|\n\n")
+    string = "Enter the name of the new hero: \n"
+    for char in string:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    new_name = input("")
+    print("\n--------------------------------------------------|\n\n")
+    bio_string = "Enter a bio for "
+    for char in bio_string:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    new_bio = input(f"{new_name}: \n")
+    print("\n--------------------------------------------------|\n\n")
     query = "INSERT INTO heroes (name, about_me, biography) VALUES (%s, 'null', %s)"
     new_name_query = execute_query(query, (new_name, new_bio,))
-    print(f"{new_name} has been added to the team!\n")
+    name_string = f"{new_name} has been added to the team!\n\n"
+    for char in name_string:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
     main_or_quit()
 
 def menu_four():
@@ -72,13 +111,24 @@ def menu_four():
     delete = input("Enter the ID of the hero you wish to delete:\n")
     query = "DELETE FROM heroes WHERE id = %s"
     delete_query = execute_query(query, (delete,))
-    print(f"Hero ID#{delete} has been removed from the team!")
+    string = f"Hero ID#{delete} has been removed from the team!"
+    for char in string:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    # print(f"Hero ID#{delete} has been removed from the team!")
     main_or_quit()
 
 def main_or_quit():
-    back_to_menu = input("Please press Enter or to return to the main menu or Q to exit the terminal:\n").capitalize()
+    string = "\n\nPlease press Enter or to return to the main menu or Q to exit the terminal:\n"
+    for char in string:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    back_to_menu = input("\n").capitalize()
     if back_to_menu == "":
         os.system('clear')
         open_main_menu()
     elif back_to_menu == "Q":
+        os.system('clear')
         quit()

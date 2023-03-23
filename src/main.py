@@ -3,23 +3,40 @@ from get_bio import get_bio
 from get_names import get_names
 from open_main_menu import open_main_menu
 from ascii_art import shrek
+from ascii_art_two import ascii_art_two
 import time
+from time import sleep
 import pwinput
 import os
+import sys
 
-shrek()
+ascii_art_two()
 time.sleep(1)
-print("\nWELCOME TO THE SUPERHERO DATABASE *BETA*\n\n\n")
+welcome_text = "\nWELCOME TO THE SUPERHERO DATABASE *BETA*\n\n\n"
+for char in welcome_text:
+    sleep(0.05)
+    sys.stdout.write(char)
+    sys.stdout.flush()
+welcome_text2 = "TO MAKE SURE YOU HAVE THE PROPER CLEARENCE, PLEASE ENTER THE ADMINISTRATOR PASSWORD FOR THIS DATABASE:\n\n"
+for char in welcome_text2:
+    sleep(0.05)
+    sys.stdout.write(char)
+    sys.stdout.flush()
 time.sleep(1)
-print("TO MAKE SURE YOU HAVE THE PROPER CLEARENCE, PLEASE ENTER THE ADMINISTRATOR PASSWORD FOR THIS DATABASE:\n\n")
 main_pass = pwinput.pwinput(prompt="PASSWORD: ").capitalize()
 if main_pass == "Test":
     time.sleep(1)
-    print("...")
+    dots = "...      ...      ...      ..."
+    for char in dots:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
     time.sleep(1)
-    print("...")
-    time.sleep(1)
-    print("SUCCESS!")
+    success = "\nSUCCESS!"
+    for char in success:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
     time.sleep(1)
     os.system('clear')
     open_main_menu()
@@ -35,4 +52,5 @@ else:
     time.sleep(1)
     print("1")
     time.sleep(1)
+    os.system('clear')
     quit()
