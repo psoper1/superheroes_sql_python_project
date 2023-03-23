@@ -17,7 +17,17 @@ def open_main_menu():
     
     if main_menu == "1":
         os.system('clear')
-        menu_one()
+        print("\n\nALL HEROES\n----------\n")
+        get_names()
+        print("\n")
+        get_bio()
+        back_to_menu = input("Please press Enter or to return to the main menu or Q to exit the terminal:\n").capitalize()
+        if back_to_menu == "":
+            os.system('clear')
+            open_main_menu()
+        elif back_to_menu == "Q":
+            quit()
+        # main_or_quit()
     elif main_menu == "2":
         os.system('clear')
         menu_two()
@@ -28,12 +38,12 @@ def open_main_menu():
         os.system('clear')
         menu_four()
 
-def menu_one():
-    print("\n\nALL HEROES\n----------\n")
-    get_names()
-    print("\n")
-    get_bio()
-    main_or_quit()
+# def menu_one():
+#     print("\n\nALL HEROES\n----------\n")
+#     get_names()
+#     print("\n")
+#     get_bio()
+#     main_or_quit()
 
 def menu_two():
     print("\n\nALL HEROES\n----------\n")
