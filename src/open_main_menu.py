@@ -108,7 +108,12 @@ def menu_four():
     get_names()
     print("--------------------------------------------------|")
     print("--------------------------------------------------|")
-    delete = input("Enter the ID of the hero you wish to delete:\n")
+    delete_string = "Enter the ID of the hero you wish to delete:\n"
+    for char in string:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    delete = input("\n")
     query = "DELETE FROM heroes WHERE id = %s"
     delete_query = execute_query(query, (delete,))
     string = f"Hero ID#{delete} has been removed from the team!"
