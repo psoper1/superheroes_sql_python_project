@@ -1,6 +1,6 @@
 -- DELETE FROM abilities USING ability_types WHERE abilities.hero_id = ability_types.id AND abilities.hero_id = 21
 
-DELETE FROM ability_types WHERE id = 13
+-- DELETE FROM ability_types WHERE id = 13
 -- DELETE FROM abilities
 -- WHERE hero_id
 -- IN (SELECT abilities.hero_id

@@ -1,7 +1,6 @@
 from database.db_connection import execute_query
 from get_bio import get_bio
 from get_names import get_names
-# from add_abilities import add_abilities
 import time
 import os
 from time import sleep
@@ -73,7 +72,7 @@ def menu_two():
             sleep(0.05)
             sys.stdout.write(char)
             sys.stdout.flush()
-        time.sleep(1)
+        sleep(1)
         print("\n")
         print(f"{name_change}")
         print("\n\n")
@@ -98,7 +97,13 @@ def menu_three():
     query = "INSERT INTO heroes (name, about_me, biography) VALUES (%s, 'null', %s)"
     new_name_query = execute_query(query, (new_name, new_bio,))
     
-    new_ability = input("What kind of abilities does this hero have?")
+    new_ability_string = "What kind of abilities does this hero have? \n"
+    for char in new_ability_string:
+        sleep(0.05)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    new_ability = input("")
+    print("\n--------------------------------------------------|\n\n")
     new_ability_split = new_ability.split(", ")
     new_ability_query = "SELECT name FROM ability_types"
     ability_list = []
